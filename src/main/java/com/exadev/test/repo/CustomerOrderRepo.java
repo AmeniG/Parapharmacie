@@ -10,4 +10,5 @@ import java.util.List;
 public interface OrderRepo extends JpaRepository<CustomerOrder,Long> {
     CustomerOrder getOrderByCode (Long code);
     List<CustomerOrder> getOrderByPrice(int Price);
+    List<CustomerOrder>getCustomerOrdersByUserId(Long id);
 }
