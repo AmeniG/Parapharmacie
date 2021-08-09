@@ -20,14 +20,19 @@ public class ProductService {
     public List<Product> getProductByName (String name){
         return productRepo.getProductsByName(name);
     }
-    public List<Product> getProductByType (String type){
-        return productRepo.getProductsByType(type);
+
+    public List<Product> getProductsByColor (String color){
+        return productRepo.getProductsByColor(color);
     }
+    public List<Product> getProductsByBrand (String brand){
+        return productRepo.getProductsByBrand(brand);
+    }
+
     public Optional<Product> getProductById(Long id){
         return productRepo.findById(id);
     }
-    public void delete (Product product){
-        productRepo.delete(product);
+    public void deleteById (Long id){
+        productRepo.deleteById(id);
     }
     public List<Product> getAllProduct(){
         return productRepo.findAll();

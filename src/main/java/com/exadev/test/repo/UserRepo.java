@@ -11,6 +11,8 @@ public interface UserRepo extends JpaRepository<User,Long> {
     List<User> getUsersByNameContains (String name); // mieux que getUserByName or getUserByNameLike
     List<User> getUserByLastName (String lastName);
     User getUserByCin(Long cin);
-    List<User> getUserByRole (String Role);
+    User getUserByEmail(String email);
+    List<User> getUserByRole (String role);
+    List<User> getUserByDestination(String destination);
 
 }

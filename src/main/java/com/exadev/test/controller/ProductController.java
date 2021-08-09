@@ -1,10 +1,7 @@
 package com.exadev.test.controller;
 
-import com.exadev.test.model.Destination;
 import com.exadev.test.model.Product;
-import com.exadev.test.model.User;
 import com.exadev.test.service.ProductService;
-import com.exadev.test.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,18 +25,25 @@ public class ProductController {
     public List<Product> getProductByName (@PathVariable String name){
       return productService.getProductByName(name);
     }
-    @GetMapping("/{type}")
-    public List<Product> getProductByType (@PathVariable String type){
-      return productService.getProductByType(type);
+    @GetMapping("/{color}")
+    public List<Product> getProductsByColor (@PathVariable String color){
+        return productService.getProductsByColor(color);
     }
+    @GetMapping("/{brand}")
+    public List<Product> getProductByBrand (@PathVariable String brand){
+        return productService.getProductsByBrand(brand);
+    }
+
     @PostMapping("")
     public Product createProduct (@RequestBody Product product){
         return productService.createProduct(product);
     }
 
+
+
     @DeleteMapping("/{id}")
-    public void deleteById(@PathVariable Product product ){
-        productService.delete(product);
+    public void deleteById(@PathVariable Long id ){
+        productService.deleteById(id);
     }
     @PutMapping("")
     public Product update (@RequestBody Product product){

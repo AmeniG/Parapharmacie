@@ -8,7 +8,9 @@ import java.util.List;
 @Repository
 public interface ProductRepo extends JpaRepository<Product,Long> {
         List<Product> getProductsByName ( String name);
-        List<Product> getProductsByType(String type);
+
+        List<Product> getProductsByColor(String color);
+        List<Product> getProductsByBrand (String brand);
 
 
 }

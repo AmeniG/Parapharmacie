@@ -50,5 +50,12 @@ public class UserController {
     public User update (@RequestBody User user){
         return userService.update(user);
     }
+    @GetMapping("/{destination}")
+    public List<User> getUserByDestination (@PathVariable String destination){
+        return userService.getUserByDestination(destination);
+    }
+
+
+
 
 }

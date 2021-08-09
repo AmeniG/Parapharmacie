@@ -27,6 +27,10 @@ public class UserService {
     public List<User> getUserByRole (String role){
         return userRepo.getUserByRole(role);
     }
+    public List<User> getUserByDestination (String destination){
+        return userRepo.getUserByDestination(destination);
+    }
+
     public Optional<User>  getUserById (Long id){
         return userRepo.findById(id);
     }
@@ -39,6 +43,7 @@ public class UserService {
     public List<User> getAllUser(){
         return userRepo.findAll();
     }
+
 
 
 }
