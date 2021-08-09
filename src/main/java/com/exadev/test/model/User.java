@@ -4,11 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.print.attribute.standard.Destination;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data // comme ca la na3mel la get la set l 7ata atribut mili declarithom m3a l classe sauf les attribut kima isAccountNonExpired , isAccountNonLocked ... ili 3andhom 3ale9a b l'implementation de UserDetails
@@ -22,7 +25,7 @@ public class User implements UserDetails {
     private Long cin;
     private String name;
     private String lastName;
-    private String pass;
+    private String password;
     private String email;
     private String destination;
     private String role;
@@ -33,14 +36,12 @@ public class User implements UserDetails {
     // ili jey ba3ed l kol se genere automatiquement quand je mets implements UserDetails donc juste ena ba3ed nzid heki private boolean is.. w barrah
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        Set<SimpleGrantedAuthority> authorities = new HashSet<>();
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority("ROLE_"+getRole());
+        authorities.add(authority);
+        return  authorities;
     }
 
-
-    @Override
-    public String getPassword() {
-        return null;
-    }
 
     @Override
     public String getUsername() {
